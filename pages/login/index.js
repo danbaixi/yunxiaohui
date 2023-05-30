@@ -49,6 +49,9 @@ Page({
           })
           return
         }
+        if (that.data.saveCount) {
+          wx.setStorageSync('account', postData)
+        }
         wx.setStorageSync('token',res.data.data.cookie)
         if (that.data.saveCount) {
           wx.setStorageSync('account', postData)
