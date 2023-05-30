@@ -3,8 +3,18 @@
     <image src="/asset/imgs/logo.png" mode="aspectFit"></image>
   </view>
   <view class="login">
-    <input type="text" model:value="{{stuId}}" class="input" placeholder="请输入学号" />
-    <input type="password" model:value="{{password}}" class="input" placeholder="请输入密码"/>
-    <button bindtap="login">登录</button>
+    <view class="form-item">
+      <image src="/asset/imgs/user.png" mode="aspectFill" />
+      <input type="text" model:value="{{stuId}}" placeholder="请输入学号" />
+    </view>
+    <view class="form-item">
+      <image src="/asset/imgs/password.png" mode="aspectFill" />
+      <input type="password" model:value="{{password}}" placeholder="请输入密码" />
+    </view>
+    <view bindtap="switchCheckStatus" class="checkbox-item">
+      <checkbox class="theme" checked="{{saveCount}}"/>
+      <view class="margin-left-sm">记住账号密码(仅本地存储)</view>
+    </view>
+    <button class="cu-btn lg" bindtap="login">登录</button>
   </view>
 </view>
