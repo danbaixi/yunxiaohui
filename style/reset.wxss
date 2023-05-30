@@ -1,7 +1,3 @@
-page {
-  background-color: var(--backgroundColor);
-}
-
 checkbox .wx-checkbox-input {
 	margin: 0;
 	width: 20px;

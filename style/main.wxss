@@ -6,5 +6,7 @@
 
 page {
   --theme: #5DEFE5;
-  --backgroundColor: #fff
+  --backgroundColor: #fff;
+
+  background-color: var(--backgroundColor);
 }
