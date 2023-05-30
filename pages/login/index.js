@@ -25,6 +25,7 @@ Page({
     })
   },
 
+  // 登录逻辑
   login() {
     const that = this
     const postData = {
@@ -65,6 +66,7 @@ Page({
     })
   },
 
+  // 切换复选框状态
   switchCheckStatus() {
     this.setData({
       saveCount: !this.data.saveCount
