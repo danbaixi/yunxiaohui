@@ -1,0 +1,12 @@
+switch.theme[checked] .wx-switch-input,
+checkbox.theme[checked] .wx-checkbox-input,
+radio.theme[checked] .wx-radio-input {
+	border-color: var(--theme) !important;
+}
+
+switch.theme[checked] .wx-switch-input.wx-switch-input-checked,
+checkbox.theme[checked] .wx-checkbox-input,
+radio.theme[checked] .wx-radio-input {
+	background-color: var(--theme) !important;
+	color: var(--white) !important;
+}
