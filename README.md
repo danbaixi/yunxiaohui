@@ -14,6 +14,8 @@ UI设计稿地址：[https://js.design/f/LlnLBx?p=7PluEepcpc](https://js.design/
 ## 课程配套文章
 - [1.项目环境搭建](/articles/1.项目环境搭建.md)
 - [2.小程序登录功能开发](/articles/2.小程序登录功能开发.md)
+- [3.封装请求函数](/articles/3.封装请求函数.md)
+- [4.环境变量配置.md](/articles/4.环境变量配置.md)
 
 
 课程未完结，还在持续更新中...
