@@ -1,3 +1,4 @@
+const app = getApp()
 // 创建请求
 export default function createRequest(options) {
   // 返回一个Promise对象
@@ -19,7 +20,7 @@ export default function createRequest(options) {
     // 构建请求url
     // 这里暂时配置本地环境域名
     // 等我们把环境配置讲了，再进一步优化
-    const baseUrl = "http://localhost:3000"
+    const baseUrl = app.getConfig("baseUrl")
     const url = `${baseUrl}${options.url}`
     // 构建请求header，把token放到header
     const header = {
@@ -80,6 +81,7 @@ export default function createRequest(options) {
       fail() {
         wx.showToast({
           title: '服务开小差啦！',
+          icon: 'none'
         })
       },
       complete() {
