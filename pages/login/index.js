@@ -1,3 +1,6 @@
+import {
+  loginRequest
+} from "../../api/main"
 Page({
 
   /**
@@ -36,38 +39,33 @@ Page({
     wx.showLoading({
       title: '登录中',
     })
-    wx.request({
-      url: 'http://localhost:3000/login',
-      data: postData,
-      method: 'POST',
-      success(res){
-        wx.hideLoading()
-        if (res.data.code == -1) {
-          wx.showToast({
-            title: res.data.msg,
-            icon: 'none'
-          })
-          return
-        }
-        if (that.data.saveCount) {
-          wx.setStorageSync('account', postData)
-        }
-        wx.setStorageSync('token',res.data.data.cookie)
-        if (that.data.saveCount) {
-          wx.setStorageSync('account', postData)
-        } else {
-          wx.removeStorageSync('account')
-        }
+    loginRequest(postData).then(res => {
+      wx.hideLoading()
+      if (res.code == -1) {
         wx.showToast({
-          title: '登录成功',
+          title: res.msg,
           icon: 'none'
         })
-        setTimeout(() => {
-          wx.redirectTo({
-            url: '/pages/index/index',
-          })
-        }, 1500);
+        return
       }
+      if (that.data.saveCount) {
+        wx.setStorageSync('account', postData)
+      }
+      wx.setStorageSync('token', res.data.cookie)
+      if (that.data.saveCount) {
+        wx.setStorageSync('account', postData)
+      } else {
+        wx.removeStorageSync('account')
+      }
+      wx.showToast({
+        title: '登录成功',
+        icon: 'none'
+      })
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '/pages/index/index',
+        })
+      }, 1500);
     })
   },
 
