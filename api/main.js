@@ -8,3 +8,17 @@ export function loginRequest(data) {
     needLogin: false
   })
 }
+
+export function getScoreListRequest(data) {
+  return createRequest({
+    url: '/scores',
+    data
+  })
+}
+
+export function getRawScoreListRequest(data) {
+  return createRequest({
+    url: '/raw-scores',
+    data
+  })
+}

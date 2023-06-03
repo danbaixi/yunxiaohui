@@ -1,5 +1,5 @@
 
-let env = "production"
+let env = "develop"
 
 // 防止我们在上传代码的时候，没有将env改成production
 const envVersion = wx.getAccountInfoSync().miniProgram.envVersion
