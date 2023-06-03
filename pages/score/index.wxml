@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="header">
+    <view class="score-types">
+      <view bindtap="changeScoreType" data-type="1" class="score-type {{type == 1 ? 'active' : ''}}">有效成绩</view>
+      <view bindtap="changeScoreType" data-type="2" class="score-type {{type == 2 ? 'active' : ''}}">原始成绩</view>
+    </view>
+    <view class="score-term">
+      <picker mode="selector" range="{{list}}" range-key="termName" value="{{termIndex}}" bindchange="changeTerm">
+        选择学期 <text class="cuIcon-unfold"></text>
+      </picker>
+    </view>
+    <view bindtap="update" class="update-btn">
+      <text class="cuIcon-refresh"></text>
+    </view>
+  </view>
+  <view class="score-list">
+    <view class="term-name">{{list[termIndex].termName}}</view>
+    <view class="list">
+      <view class="score-item" wx:for="{{list[termIndex].scoreList}}" wx:key="num">
+        <view class="course-name">
+          <view>{{item.name}}</view>
+          <view wx:if="{{type == 2}}" class="raw-score__content">
+            <view wx:if="{{item.normalScore}}">平时：{{item.normalScore}}</view>
+            <view><text wx:if="{{item.midtermScore}}">期中：{{item.midtermScore}}</text> <text wx:if="{{item.finalScore}}">期末：{{item.finalScore}}</text></view>
+          </view>
+        </view>
+        <view wx:if="{{type == 1}}" class="course-score {{item.score < 60 ? 'fail' : ''}}">{{item.score}}</view>
+        <view wx:else class="course-score {{item.complexScore < 60 ? 'fail' : ''}}">{{item.complexScore}}</view>
+      </view>
+    </view>
+  </view>
+</view>
