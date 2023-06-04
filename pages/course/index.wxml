@@ -1,2 +1,34 @@
-<!--pages/course/index.wxml-->
-<text>pages/course/index.wxml</text>
+<cu-custom bgColor="bg-white" customBack="{{true}}">
+  <view slot="backText">
+    <image class="refresh-btn" src="/asset/imgs/refresh.png" mode="aspectFill"></image>
+  </view>
+  <view slot="content">
+    <text>第1周</text> <text class="cuIcon-unfold"></text>
+  </view>
+</cu-custom>
+<view class="container">
+  <view class="week-list">
+    <view class="now-month">
+      <text>05</text>
+      <text>月</text>
+    </view>
+    <view class="week-item" wx:for="{{7}}" wx:key>
+      <text class="week-name">周{{index+1}}</text>
+      <text class="week-date">{{index+1}}日</text>
+    </view>
+  </view>
+  <view class="course-content">
+    <view class="course-nums">
+      <view class="course-num" wx:for="{{12}}" wx:key>
+        {{index + 1 > 9 ? index + 1 : '0' + (index + 1)}}
+      </view>
+    </view>
+    <view class="course-list">
+      <view class="course-item" wx:for="{{courseList}}" wx:key="key" style="top: {{(item.section - 1) * 120}}rpx;left:{{(item.week - 1) * ((windowWidth * 2 - 50) / 7)}}rpx;height:{{item.sectionCount * 120}}rpx;">
+        <view class="course-item__content" style="background-color: {{item.color}};">
+          {{item.name}}@{{item.address}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

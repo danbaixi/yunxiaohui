@@ -5,14 +5,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    courseList: [
+      {
+        name: '网络工程',
+        week: 2,
+        section: 1,
+        sectionCount: 1,
+        address: '博雅楼302',
+        color: '#D06969'
+      },
+      {
+        name: '大学体育1',
+        week: 2,
+        section: 3,
+        sectionCount: 2,
+        address: '篮球场',
+        color: '#86D069'
+      },
+      {
+        name: '马克思列宁主义很长的名字我也不知道怎么办',
+        week: 3,
+        section: 5,
+        sectionCount: 4,
+        address: '信达楼392',
+        color: '#AE69D0'
+      },
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const {windowWidth} = wx.getSystemInfoSync()
+    this.setData({
+      windowWidth
+    })
   },
 
   /**

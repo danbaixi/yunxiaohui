@@ -1,1 +1,93 @@
-/* pages/course/index.wxss */
+page {
+  background-color: #fff;
+}
+
+.refresh-btn {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.week-list {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  background: #f5f7f8;
+  z-index: 1;
+}
+
+.now-month {
+  width: 50rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.week-item {
+  width: calc((100% - 50rpx) / 7);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.week-name {
+  font-size: 24rpx;
+  color: #444444;
+}
+
+.week-date {
+  font-size: 20rpx;
+  color: #a1a1a1;
+}
+
+.course-content {
+  width: 100%;
+  padding-top: 92rpx;
+  display: flex;
+}
+
+.course-nums {
+  width: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6f7;
+}
+
+.course-num {
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.course-list {
+  width: calc(100% - 50rpx);
+  height: 100%;
+  position: relative;
+}
+
+.course-item {
+  position: absolute;
+  width: calc((100% - 50rpx) / 7);
+  padding: 2rpx;
+}
+
+.course-item__content {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  text-align: center;
+}
