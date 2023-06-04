@@ -1,3 +1,6 @@
+<cu-custom bgColor="bg-white">
+  <view slot="content"> </view>
+</cu-custom>
 <view class="container">
   <view class="logo">
     <image src="/asset/imgs/logo.png" mode="aspectFit"></image>
