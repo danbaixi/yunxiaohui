@@ -3,18 +3,18 @@
     <image class="refresh-btn" src="/asset/imgs/refresh.png" mode="aspectFill"></image>
   </view>
   <view slot="content">
-    <text>第1周</text> <text class="cuIcon-unfold"></text>
+    <view bindtap="selectWeek"><text>第{{nowWeek}}周</text> <text class="cuIcon-unfold"></text></view>
   </view>
 </cu-custom>
 <view class="container">
   <view class="week-list">
     <view class="now-month">
-      <text>05</text>
+      <text>{{nowMonth < 10 ? '0' + nowMonth : nowMonth}}</text>
       <text>月</text>
     </view>
-    <view class="week-item" wx:for="{{7}}" wx:key>
-      <text class="week-name">周{{index+1}}</text>
-      <text class="week-date">{{index+1}}日</text>
+    <view class="week-item" wx:for="{{weekDayCount}}" wx:key>
+      <text class="week-name">周{{weekIndexText[index]}}</text>
+      <text class="week-date">{{weekCalendar[index] == 1 ? ((nowMonth == 12 ? 1 : (nowMonth + 1)) + '月') :(weekCalendar[index] < 9 ? '0' : '') + weekCalendar[index]}}</text>
     </view>
   </view>
   <view class="course-content">
@@ -32,3 +32,13 @@
     </view>
   </view>
 </view>
+<van-popup show="{{showSwitchWeek}}" position="bottom" bind:close="hideSwitchWeek" round>
+  <view class="switch-week__popup">
+    <view class="switch-week__title">切换周数</view>
+    <view class="switch-week__list">
+      <view class="switch-week__item" wx:for="{{totalWeek}}" wx:key>
+        <view bindtap="switchWeek" data-week="{{item+1}}" class="switch-week__item-box {{nowWeek == index + 1 ? 'active' : ''}}">{{item + 1}}</view>
+      </view>
+    </view>
+  </view>
+</van-popup>

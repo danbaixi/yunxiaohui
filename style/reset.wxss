@@ -10,3 +10,7 @@ radio.theme[checked] .wx-radio-input {
 	background-color: var(--theme) !important;
 	color: var(--white) !important;
 }
+
+.cu-bar .content {
+  pointer-events: auto;
+}

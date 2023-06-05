@@ -5,6 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nowWeek: 1, // 当前周
+    totalWeek: 20, // 周总数
+    showSwitchWeek: false, // 显示选择周数弹窗
+    weekDayCount: 7,
+    startDate: '2023/02/20', // 开学日期
+    weekIndexText: ['一','二','三','四','五','六','日'],
+    nowMonth: 1, // 当前周的月份
     courseList: [
       {
         name: '网络工程',
@@ -30,7 +37,7 @@ Page({
         address: '信达楼392',
         color: '#AE69D0'
       },
-    ]
+    ],
   },
 
   /**
@@ -41,54 +48,67 @@ Page({
     this.setData({
       windowWidth
     })
+    this.getWeekDates()
+    this.getNowWeek()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  selectWeek() {
+    this.setData({
+      showSwitchWeek: true
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  switchWeek(e) {
+    const week = e.currentTarget.dataset.week
+    this.setData({
+      nowWeek: week,
+      showSwitchWeek: false
+    })
+    this.getWeekDates()
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  hideSwitchWeek() {
+    this.setData({
+      showSwitchWeek: false
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  getWeekDates() {
+    const startDate = new Date(this.data.startDate)
+    const addTime = (this.data.nowWeek - 1) * 7 * 24 * 60 * 60 * 1000
+    const firstDate = startDate.getTime() + addTime
+    const { month: nowMonth } = this.getDateObject(new Date(firstDate))
+    const weekCalendar = []
+    for(let i = 0; i<this.data.weekDayCount;i++) {
+      const date = new Date(firstDate + i * 24 * 60 * 60 * 1000)
+      const { day } = this.getDateObject(date)
+      weekCalendar.push(day)
+    }
+    this.setData({
+      nowMonth,
+      weekCalendar
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
+  getDateObject(date = new Date()) {
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return {
+      year,
+      month,
+      day
+    }
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  getNowWeek() {
+    const nowDate = new Date().getTime()
+    const startDate = new Date(this.data.startDate)
+    const time = nowDate - startDate
+    const nowWeek = Math.ceil(time / 1000 / 60 / 60 / 24 / 7)
+    this.setData({
+      nowWeek
+    })
+    this.getWeekDates()
   }
 })
