@@ -1,0 +1,10 @@
+function indexOf(arr,value) {
+  if (arr.indexOf(value) > -1) {
+    return true
+  }
+  return false
+}
+
+module.exports = {
+  indexOf: indexOf
+}
