@@ -37,6 +37,11 @@ page {
   justify-content: center;
 }
 
+.week-item.active {
+  background-color: var(--theme);
+  border-radius: 20rpx;
+}
+
 .week-name {
   font-size: 24rpx;
   color: #444444;
@@ -45,6 +50,11 @@ page {
 .week-date {
   font-size: 20rpx;
   color: #a1a1a1;
+}
+
+.active .week-name,
+.active .week-date {
+  color: #fff;
 }
 
 .course-content {

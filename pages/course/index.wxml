@@ -13,7 +13,7 @@
       <text>{{nowMonth < 10 ? '0' + nowMonth : nowMonth}}</text>
           <text>月</text>
     </view>
-    <view class="week-item" wx:for="{{weekDayCount}}" wx:key>
+    <view class="week-item {{nowMonth == todayMonth && todayDay == weekCalendar[index] ? 'active' : ''}}" wx:for="{{weekDayCount}}" wx:key>
       <text class="week-name">周{{weekIndexText[index]}}</text>
       <text class="week-date">{{weekCalendar[index] == 1 ? ((nowMonth == 12 ? 1 : (nowMonth + 1)) + '月') :(weekCalendar[index] < 9 ? '0' : '' ) + weekCalendar[index] + '日' }}</text>
     </view>
@@ -24,10 +24,10 @@
         {{index + 1 > 9 ? index + 1 : '0' + (index + 1)}}
       </view>
     </view>
-    <swiper class="course-swpier" current="{{nowWeek-1}}" bindchange="swiperSwitchWeek">
+    <swiper duration="{{firstEntry ? 0 : 300}}" circular  class="course-swpier" current="{{nowWeek-1}}" bindchange="swiperSwitchWeek">
       <swiper-item wx:for="{{totalWeek}}" wx:key="index" wx:for-index="weekIndex">
         <view class="course-list">
-          <view wx:if="{{tools.indexOf(item.weeks,weekIndex+1)}}" class="course-item" wx:for="{{courseList}}" wx:key="key" style="top: {{(item.section - 1) * 120}}rpx;left:{{(item.week - 1) * ((windowWidth * 2 - 50) / 7)}}rpx;height:{{item.sectionCount * 120}}rpx;">
+          <view wx:if="{{tools.indexOf(item.weeks,weekIndex+1)}}" bindtap="navCourseDetail" data-index="{{index}}" class="course-item" wx:for="{{courseList}}" wx:key="key" style="top: {{(item.section - 1) * 120}}rpx;left:{{(item.week - 1) * ((windowWidth * 2 - 50) / 7)}}rpx;height:{{item.sectionCount * 120}}rpx;">
             <view class="course-item__content" style="background-color: {{courseColor[item.name]}};">
               {{item.name}}@{{item.address ? item.address : '未知'}}
             </view>

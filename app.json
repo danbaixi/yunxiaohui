@@ -4,7 +4,8 @@
     "pages/login/index",
     "pages/score/index",
     "pages/course/index",
-    "pages/mine/index"
+    "pages/mine/index",
+    "pages/course-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,7 +15,7 @@
     "navigationStyle": "custom"
   },
   "usingComponents": {
-    "cu-custom":"/style/colorui/components/cu-custom"
+    "cu-custom": "/style/colorui/components/cu-custom"
   },
   "tabBar": {
     "color": "#9E9E9E",

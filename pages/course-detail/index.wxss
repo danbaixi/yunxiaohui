@@ -1,0 +1,36 @@
+page {
+  background: #fafafa;
+}
+
+.info-box {
+  background-color: #fff;
+  padding: 30rpx 30rpx 0;
+}
+
+.course-title {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+.info-list {
+  margin-top: 10rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+}
+
+.info-item:not(:last-child) {
+  border-bottom: 1rpx solid rgba(243, 243, 243, 0.82);
+}
+
+.info-item__key {
+  color: var(--theme);
+  margin-right: 40rpx;
+}
+
+.info-item__val {
+  color: #666666;
+}

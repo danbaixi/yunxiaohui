@@ -31,7 +31,9 @@ Page({
       "#3A98B9",
       "#609966",
     ],
-    courseColor: {}
+    courseColor: {},
+    weekCalendar: [1, 2, 3, 4, 5, 6, 7],
+    firstEntry: true
   },
 
   /**
@@ -47,6 +49,7 @@ Page({
     this.getWeekDates()
     this.getNowWeek()
     this.getData()
+    this.getTodayDate()
   },
 
   selectWeek() {
@@ -136,25 +139,37 @@ Page({
       }
       return
     }
-    this.update()
+    this.updateFn(true)
   },
 
   update() {
+    this.updateFn()
+  },
+
+  updateFn(firstEntry = false) {
     const that = this
     getCourseListRequest().then(res => {
       that.setData({
         courseList: res.data
       })
       that.buildCourseColor()
-      wx.showToast({
-        title: '更新成功',
-        icon: 'success'
-      })
+      if (!firstEntry) {
+        wx.showToast({
+          title: '更新成功',
+          icon: 'success'
+        })
+      }
       wx.setStorageSync(courseCacheKey, res.data)
     })
   },
 
   swiperSwitchWeek(e) {
+    if (e.detail.source == '') {
+      this.setData({
+        firstEntry: false
+      })
+      return
+    }
     const index = e.detail.current
     this.switchWeekFn(index + 1)
   },
@@ -171,6 +186,25 @@ Page({
     wx.setStorageSync(courseColorCacheKey, courseColor)
     this.setData({
       courseColor
+    })
+  },
+
+  // 获取今天日期
+  getTodayDate() {
+    const {
+      month: todayMonth,
+      day: todayDay
+    } = this.getDateObject()
+    this.setData({
+      todayMonth,
+      todayDay
+    })
+  },
+
+  navCourseDetail(e) {
+    const index = e.currentTarget.dataset.index
+    wx.navigateTo({
+      url: `/pages/course-detail/index?info=${JSON.stringify(this.data.courseList[index])}`,
     })
   }
 })
