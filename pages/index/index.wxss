@@ -56,7 +56,7 @@ page {
   background: #ffffff;
   box-shadow: 0px 0px 24rpx -4rpx rgba(0, 0, 0, 0.1);
   margin-top: 30rpx;
-  padding: 30rpx 30rpx 70rpx 30rpx;
+  padding: 30rpx;
 }
 
 .course-option {
@@ -78,11 +78,7 @@ page {
 }
 
 .course-box {
-  margin-top: 80rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-top: 10rpx;
 }
 
 .course-box .empty-img {
@@ -94,4 +90,36 @@ page {
   font-size: 26rpx;
   color: #999999;
   margin-top: 50rpx;
+}
+
+.course-list {
+  width: 100%;
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.course-item:not(:last-child) {
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
+.course-name {
+  color: #3D3D3D;
+}
+
+.course-address {
+  font-size: 24rpx;
+  color: #838383;
+}
+
+.empty-course {
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,4 +1,7 @@
 const app = getApp()
+import {
+  getNowWeek
+} from '../../utils/util'
 Page({
   data: {
     navList: [
@@ -22,10 +25,13 @@ Page({
         icon: '/asset/imgs/calendar.png',
         path: '/pages/calendar/index'
       },
-    ]
+    ],
+    startDate: '2023/02/20', // 开学日期
+    totalWeek: 20,
+    todayCourseList: []
   },
   onLoad() {
-
+    this.getTodayCourseList()
   },
 
   nav(e) {
@@ -33,6 +39,31 @@ Page({
     const path = this.data.navList[index].path
     wx.navigateTo({
       url: path,
+      fail() {
+        wx.switchTab({
+          url: path,
+        })
+      }
+    })
+  },
+
+  getTodayCourseList() {
+    const courseList = wx.getStorageSync('courses')
+    if (!courseList) return
+    const todayWeek = new Date().getDay()
+    const todayWeeks = getNowWeek(this.data.startDate, this.data.totalWeek)
+    // const todayWeek = 2
+    // const todayWeeks = 15
+    const todayCourseList = courseList.filter(item => {
+      return item.week == todayWeek && item.weeks.indexOf(todayWeeks) > -1
+    })
+    todayCourseList.sort((a,b) => {
+      return a.section - b.section
+    })
+    this.setData({
+      todayWeek,
+      todayWeeks,
+      todayCourseList
     })
   }
 })

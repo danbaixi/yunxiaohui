@@ -5,6 +5,13 @@ function indexOf(arr,value) {
   return false
 }
 
+// 返回星期文字
+function getWeekText(num) {
+  var arr = ['日','一','二','三','四','五','六']
+  return arr[num]
+}
+
 module.exports = {
-  indexOf: indexOf
+  indexOf: indexOf,
+  getWeekText: getWeekText
 }

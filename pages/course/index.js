@@ -1,6 +1,9 @@
 import {
   getCourseListRequest
 } from '../../api/main'
+import {
+  getNowWeek
+} from '../../utils/util'
 const courseCacheKey = "courses"
 const courseColorCacheKey = "courseColor"
 Page({
@@ -113,10 +116,7 @@ Page({
   },
 
   getNowWeek() {
-    const nowDate = new Date().getTime()
-    const startDate = new Date(this.data.startDate)
-    const time = nowDate - startDate
-    const nowWeek = Math.ceil(time / 1000 / 60 / 60 / 24 / 7)
+    const nowWeek = getNowWeek(this.data.startDate, this.data.totalWeek)
     this.setData({
       nowWeek
     })
