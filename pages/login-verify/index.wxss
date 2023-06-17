@@ -1,0 +1,60 @@
+page {
+  background: rgba(250, 250, 250, 1);
+}
+
+.login {
+  padding: 64rpx;
+  margin-top: 60rpx;
+}
+
+.form-item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 32rpx;
+}
+
+.login .cu-btn {
+  width: 100%;
+  height: 98rpx;
+  border-radius: 60rpx;
+  background: linear-gradient(90deg,
+      rgba(193, 239, 245, 0.9) 0%,
+      rgba(10, 232, 240, 1) 1%,
+      rgba(136, 242, 223, 1) 100%);
+  box-shadow: 0rpx 0rpx 12rpx 0rpx rgba(0, 0, 0, 0.1);
+  color: #fff;
+  margin-top: 100rpx;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-top: 176rpx;
+}
+
+.header image {
+  width: 288rpx;
+  height: 176rpx;
+}
+
+.form-item {
+  height: 98rpx;
+  border-radius: 60rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1rpx solid rgba(232, 232, 232, 0.86);
+  box-shadow: 0rpx 0rpx 2rpx -4rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  margin-bottom: 48rpx;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.form-item .verify-img {
+  width: 160rpx;
+  height: 70rpx;
+}

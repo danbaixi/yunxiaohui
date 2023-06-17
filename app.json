@@ -5,7 +5,8 @@
     "pages/score/index",
     "pages/course/index",
     "pages/mine/index",
-    "pages/course-detail/index"
+    "pages/course-detail/index",
+    "pages/login-verify/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
