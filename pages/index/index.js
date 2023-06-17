@@ -4,8 +4,7 @@ import {
 } from '../../utils/util'
 Page({
   data: {
-    navList: [
-      {
+    navList: [{
         title: '查课表',
         icon: '/asset/imgs/course.png',
         path: '/pages/course/index'
@@ -48,16 +47,15 @@ Page({
   },
 
   getTodayCourseList() {
-    const courseList = wx.getStorageSync('courses')
-    if (!courseList) return
-    const todayWeek = new Date().getDay()
-    const todayWeeks = getNowWeek(this.data.startDate, this.data.totalWeek)
     // const todayWeek = 2
     // const todayWeeks = 15
+    const todayWeek = new Date().getDay()
+    const todayWeeks = getNowWeek(this.data.startDate, this.data.totalWeek)
+    const courseList = wx.getStorageSync('courses')
     const todayCourseList = courseList.filter(item => {
       return item.week == todayWeek && item.weeks.indexOf(todayWeeks) > -1
     })
-    todayCourseList.sort((a,b) => {
+    todayCourseList.sort((a, b) => {
       return a.section - b.section
     })
     this.setData({
